@@ -10,10 +10,10 @@ public class ColaCircular<T> {
         tamanio = 0;
     }
 
-    public void encolar(T data) {
+    public void enqueue(T data) {
         Nodo<T> nodoNuevo = new Nodo<>(data, null);
 
-        if (estaVacio()){
+        if (isEmpty()){
             frente = fin = nodoNuevo;
             frente.siguiente = frente;
         } else {
@@ -25,8 +25,8 @@ public class ColaCircular<T> {
         tamanio++;
     }
 
-    public T decolar() {
-        if (estaVacio()){
+    public T dequeue() {
+        if (isEmpty()){
             return null;
         } else {
             T dato = frente.data;
@@ -53,11 +53,11 @@ public class ColaCircular<T> {
         }
     }
 
-    private boolean estaVacio(){
+    private boolean isEmpty(){
         return tamanio == 0;
     }
 
-    public int tamanio(){
+    public int size(){
         return tamanio;
     }
 }

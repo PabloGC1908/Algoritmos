@@ -1,11 +1,21 @@
 package com.pgc.EstructuraDeDatos.Listas.ListasEnlazadasSimples;
 
 public class ListaEnlazadaSimple<T> {
-    private Nodo<T> cabeza = null;
-    private Nodo<T> cola = null;
-    private int longitudLista = 0;
+    private Nodo<T> cabeza;
+    private Nodo<T> cola;
+    private int longitudLista;
 
-    public void insertarElementoFinal(T dato){
+    public ListaEnlazadaSimple() {
+        cabeza = null;
+        cola = null;
+        longitudLista = 0;
+    }
+
+    public void insertar(T dato) {
+        insertarFinal(dato);
+    }
+
+    public void insertarFinal(T dato){
         if (estaVacio()){
             cabeza = cola = new Nodo<>(dato, null);
         }
@@ -17,7 +27,7 @@ public class ListaEnlazadaSimple<T> {
         longitudLista++;
     }
 
-    public void insertarElementoInicio(T dato){
+    public void insertarInicio(T dato){
         if (estaVacio()){
             cabeza = cola = new Nodo<>(dato, null);
         }
@@ -30,7 +40,7 @@ public class ListaEnlazadaSimple<T> {
         longitudLista++;
     }
 
-    public void eliminarElemento(T data)
+    public void eliminar(T data)
     {
         Nodo<T> nodoActual = cabeza, nodoAnterior = null;
 
@@ -51,46 +61,84 @@ public class ListaEnlazadaSimple<T> {
         longitudLista--;
     }
 
+    public T eliminarInicio() {
+        if (estaVacio()) {
+            return null;
+        }
+        else {
+            Nodo<T> nodoRemovido = cabeza;
+            cabeza = nodoRemovido.siguiente;
+            longitudLista--;
+
+            return nodoRemovido.data;
+        }
+    }
+
+    public T eliminarFinal() {
+        if (estaVacio()) {
+            return null;
+        } else if (cabeza.siguiente == null) {
+            T data = cabeza.data;
+            cabeza = null;
+            return data;
+        } else {
+            Nodo<T> nodoAnterior = null;
+            Nodo<T> nodoActual = cabeza;
+
+            while (nodoActual.siguiente != null){
+                nodoAnterior = nodoActual;
+                nodoActual = nodoActual.siguiente;
+            }
+
+
+            nodoAnterior.siguiente = null;
+            return nodoActual.data;
+        }
+    }
+
+
     public void eliminarLista(){
         cabeza = null;
         longitudLista = 0;
     }
 
-    public void buscarElemento(T dato){
+    public boolean buscar(T dato){
         Nodo<T> nodoActual = cabeza;
         int i = 1;
 
         if (dato != null) {
             while (nodoActual != null) {
                 if (nodoActual.data.equals(dato)) {
-                    System.out.println(dato);
-                    System.out.println("Indice del dato: " + i);
-                    return;
+                    return true;
                 }
 
                 nodoActual = nodoActual.siguiente;
                 i++;
             }
-            System.out.println("Dato no encontrado");
         }
+
+        return false;
 
     }
 
-    public void mostrarLista(){
+    public String mostrar(){
+        StringBuilder resultado = new StringBuilder();
         Nodo<T> nodo = cabeza;
         while (nodo != null)
         {
-            System.out.print(nodo.data+" ");
+            resultado.append(nodo.data).append(" ");
             nodo = nodo.siguiente;
         }
+
+        return resultado.toString();
     }
 
-    public int tamanoLista(){
+    public int tamanio(){
         return longitudLista;
     }
 
     public boolean estaVacio(){
-        return tamanoLista() == 0;
+        return tamanio() == 0;
     }
 
 }

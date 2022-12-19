@@ -1,28 +1,28 @@
 package com.pgc.EstructuraDeDatos.Pila;
 
-public class PilaDinamica<T> {
+public class PilaDinamica<T>{
     private Nodo<T> tope;
-    private Nodo<T> bottom;
+    private Nodo<T> ultimo;
     private int tamanioPila = 0;
 
     public PilaDinamica() {
     }
 
     public void push(Nodo<T> nodo) {
-        if (!estaVacio()) {
+        if (!this.isEmpty()) {
             nodo.siguiente = tope;
         }
-        tope = bottom = nodo;
+        tope = ultimo = nodo;
 
         tamanioPila++;
     }
 
     public void push(T data) {
         Nodo<T> nodo = new Nodo<>(data, null);
-        if (!estaVacio()) {
+        if (!this.isEmpty()) {
             nodo.siguiente = tope;
         }
-        tope = bottom = nodo;
+        tope = ultimo = nodo;
 
         tamanioPila++;
     }
@@ -45,14 +45,14 @@ public class PilaDinamica<T> {
     }
 
     public T bottom() {
-        return bottom.data;
+        return ultimo.data;
     }
 
-    public int tamanioPila() {
+    public int tamanio() {
         return tamanioPila;
     }
 
-    public boolean estaVacio() {
+    public boolean isEmpty() {
         return tamanioPila == 0;
     }
 }

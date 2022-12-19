@@ -1,9 +1,15 @@
 package com.pgc.EstructuraDeDatos.Listas.ListasEnlazadasDobles;
 
 public class ListaEnlazadaDoble<T> {
-    private Nodo<T> cabeza = null;
-    private Nodo<T> cola = null;
-    private int tamanioLista = 0;
+    private Nodo<T> cabeza;
+    private Nodo<T> cola;
+    private int tamanioLista;
+
+    public ListaEnlazadaDoble() {
+        cabeza = null;
+        cola = null;
+        tamanioLista = 0;
+    }
 
     public void insertarElemento(T dato){
         insertarElementoFinal(dato);

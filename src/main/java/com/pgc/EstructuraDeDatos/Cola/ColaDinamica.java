@@ -1,42 +1,56 @@
 package com.pgc.EstructuraDeDatos.Cola;
 
 public class ColaDinamica<T> {
-    private Nodo<T> ultimoItem = null;
-    private Nodo<T> primerItem = null;
-    private int tamanioCola = 0;
+    private Nodo<T> final_;
+    private Nodo<T> frente;
+    private int tamanioCola;
 
-    public void enqueue(T dato){
-        if (estaVacio()){
-            ultimoItem = primerItem = new Nodo<>(dato, null);
+    public ColaDinamica() {
+        frente = final_ = null;
+        tamanioCola = 0;
+    }
+
+    public void encolar(T dato){
+        if (isEmpty()){
+            final_ = frente = new Nodo<>(dato, null);
         }
         else {
             Nodo<T> nodoNuevo = new Nodo<>(dato, null);
-            nodoNuevo.siguiente = primerItem;
-            primerItem = nodoNuevo;
+            nodoNuevo.siguiente = final_;
+            final_ = nodoNuevo;
         }
 
         tamanioCola++;
     }
 
-    public T dequeue(){
-        Nodo<T> nodoRemovido = null;
+    public T decolar(){
+        T data;
+        if (frente == null) {
+            return null;
+        }
+        else {
+            Nodo<T> nodoRemovido = frente;
+            data = frente.data;
 
-        return nodoRemovido.data;
+        }
+
+        tamanioCola--;
+        return data;
     }
 
-    public T itemFinal(){
-        return ultimoItem.data;
+    public T elegirFinal(){
+        return final_.data;
     }
 
-    public T itemInicial(){
-        return primerItem.data;
+    public T peekFrente(){
+        return frente.data;
     }
 
-    public boolean estaVacio(){
+    public boolean isEmpty(){
         return tamanioCola == 0;
     }
 
-    public int tamanioCola() {
+    public int tamanio() {
         return tamanioCola;
     }
 

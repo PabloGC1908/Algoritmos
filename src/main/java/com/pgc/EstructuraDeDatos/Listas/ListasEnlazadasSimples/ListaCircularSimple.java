@@ -20,7 +20,6 @@ public class ListaCircularSimple<T> {
         tamanioLista++;
     }
 
-    // TODO
     public void insertarElemFinal(Nodo<T> nodo){
         if (estaVacio()){
             cabeza = cola = nodo;
@@ -35,8 +34,7 @@ public class ListaCircularSimple<T> {
         tamanioLista++;
     }
 
-    // TODO
-    public void insertarElementoPosicion(Nodo<T> nodo, int posicion){
+    public void insertarPosicion(Nodo<T> nodo, int posicion){
         if (posicion < 0 && posicion > tamanioLista){
             System.out.println("Posicion erronea");
             return;
