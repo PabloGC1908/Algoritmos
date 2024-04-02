@@ -1,6 +1,6 @@
-package com.pgc.LinkedList;
+package com.pgc.data_structures.linkedlist;
 
-public class LinkedList<T> {
+public class LinkedList<T> implements List<T> {
     private int length = 0;
     private Node<T> head;
     private Node<T> tail;
@@ -14,9 +14,13 @@ public class LinkedList<T> {
         this.length++;
     }
 
+
+    @Override
     public int length() {
         return length;
     }
+
+    @Override
     public void add(T data) {
         addLast(data);
     }
@@ -41,7 +45,8 @@ public class LinkedList<T> {
         length++;
     }
 
-    private void addLast(T data) {
+    @Override
+    public void addLast(T data) {
         if (head != null && tail != null) {
             Node<T> node = new Node<>(data);
             tail.next = node;
@@ -65,27 +70,54 @@ public class LinkedList<T> {
         length++;
     }
 
+    @Override
     public T getHead() {
         return head.data;
     }
 
+    @Override
     public T getTail() {
         return tail.data;
     }
 
+    @Override
     public void remove(T data) {
         Node<T> node = head;
-        Node<T> prevNode = node;
+        Node<T> prevNode = null;
 
         while (node != null) {
             if (node.data.equals(data)) {
-                prevNode.next =
+                assert prevNode != null;
+                prevNode.next = node.next;
             }
+
+            prevNode = node;
+            node = node.next;
         }
 
         length--;
     }
 
+    @Override
+    public void removeFirst() {
+        head = head.next;
+    }
+
+    @Override
+    public void removeLast() {
+        Node<T> last = head;
+        Node<T> prev = null;
+
+        while (last.next != null) {
+            prev = last;
+            last = last.next;
+        }
+
+        assert prev != null;
+        prev.next = null;
+    }
+
+    @Override
     public boolean search(T data) {
         Node<T> node = head;
         while (node != null) {
@@ -99,6 +131,7 @@ public class LinkedList<T> {
         return false;
     }
 
+    @Override
     public void print() {
         Node<T> node = head;
         while (node != null) {

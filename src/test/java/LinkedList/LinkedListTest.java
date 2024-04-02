@@ -2,7 +2,7 @@ package LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.pgc.LinkedList.LinkedList;
+import com.pgc.data_structures.linkedlist.LinkedList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,22 +15,22 @@ public class LinkedListTest {
     }
 
     @Test
-    void addFirstTest() {
+    void addFirstNodeTest() {
         list.addFirst(1);
         list.addFirst(2);
 
         assertEquals(2, list.length());
     }
 
-    void addTest() {
+    void addNodeTest() {
 
     }
 
-    void removeTest() {
+    void removeNodeTest() {
 
     }
 
-    void searchTest() {
+    void searchNodeTest() {
 
     }
 }

@@ -1,9 +1,7 @@
 package com.pgc;
 
-import com.pgc.LinkedList.LinkedList;
+import com.pgc.data_structures.linkedlist.LinkedList;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
         LinkedList<Integer> linkedList = new LinkedList<>();
@@ -12,8 +10,25 @@ public class Main {
         linkedList.add(2);
         linkedList.add(3);
         linkedList.add(4);
-        linkedList.add(5, 2);
+        linkedList.add(5, 4);
 
+        linkedList.print();
+
+        linkedList.removeFirst();
+
+        System.out.println();
+        linkedList.print();
+
+        System.out.println();
+        linkedList.removeLast();
+        linkedList.print();
+
+        System.out.println();
+        linkedList.remove(3);
+        linkedList.print();
+
+        System.out.println();
+        linkedList.remove(4);
         linkedList.print();
     }
 }
