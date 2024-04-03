@@ -1,4 +1,4 @@
-package com.pgc.data_structures.linkedlist;
+package com.pgc.data_structures.common.simple;
 
 public class Node<T> {
     public T data;

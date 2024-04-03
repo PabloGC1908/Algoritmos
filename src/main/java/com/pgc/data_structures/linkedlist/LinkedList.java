@@ -1,5 +1,7 @@
 package com.pgc.data_structures.linkedlist;
 
+import com.pgc.data_structures.common.simple.Node;
+
 public class LinkedList<T> implements List<T> {
     private int length = 0;
     private Node<T> head;
